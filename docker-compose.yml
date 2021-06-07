@@ -12,8 +12,8 @@ services:
       - db_root
     environment:
       - MYSQL_USER=${USER}
-      - MYSQL_PASSWORD_FILE=/run/secrets/db_pass
-      - MYSQL_ROOT_PASSWORD=/run/secrets/root_pass
+      - MYSQL_PASSWORD_FILE=password.txt
+      - MYSQL_ROOT_PASSWORD=root_password.txt
       - MYSQL_DATABASE=${DATABASE}
     volumes:
       - ./mysql:/var/lib/mysql 
