@@ -1,7 +1,7 @@
 <?php
 	$user=getenv('USER');
 	$db=getenv('DATABASE');
-	$pass=rtrim(file_get_contents("/run/secrets/db_pass"));
+	$pass="password";
 	$connection=mysqli_connect('db',$user,$pass,$db);
 	// Check connection
 	if (mysqli_connect_errno()) {

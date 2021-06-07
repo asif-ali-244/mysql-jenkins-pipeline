@@ -7,9 +7,6 @@ services:
     ports:
       - "3000:3306"
     env_file: .env
-    secrets:
-      - db_pass
-      - db_root
     environment:
       - MYSQL_USER=${USER}
       - MYSQL_PASSWORD_FILE=password.txt
