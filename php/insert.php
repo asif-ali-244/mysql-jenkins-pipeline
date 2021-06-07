@@ -2,7 +2,7 @@
 	$user=getenv('USER');
 	$db=getenv('DATABASE');
 	$pass="password";
-	$connection=mysqli_connect('db',$user,$pass,$db);
+	$connection=mysqli_connect('localhost',$user,$pass,$db);
 	// Check connection
 	if (mysqli_connect_errno()) {
 	  die("Failed to connect to MySQL: ".mysqli_connect_error());
