@@ -29,7 +29,7 @@ services:
       - db_pass
     environment:
       - MYSQL_USER=${USER}
-      - MYSQL_PASSWORD=/run/secrets/db_pass
+      - MYSQL_PASSWORD=password.txt
     ports:
       - "8001:80"
     depends_on:
