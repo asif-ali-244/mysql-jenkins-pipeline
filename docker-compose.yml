@@ -1,0 +1,46 @@
+version: "3.1"
+
+services:
+  db:
+    image: mysql:5.7
+    command: --default-authentication-plugin=mysql_native_password
+    ports:
+      - "3000:3306"
+    env_file: .env
+    secrets:
+      - db_pass
+      - db_root
+    environment:
+      - MYSQL_USER=${USER}
+      - MYSQL_PASSWORD_FILE=/run/secrets/db_pass
+      - MYSQL_ROOT_PASSWORD=/run/secrets/root_pass
+      - MYSQL_DATABASE=${DATABASE}
+    volumes:
+      - ./mysql:/var/lib/mysql 
+
+  www:
+    build:
+      context: .
+      dockerfile: dockerfile 
+    volumes:
+      - ./php/:/var/www/html/
+    env_file: .env
+    secrets:
+      - db_pass
+    environment:
+      - MYSQL_USER=${USER}
+      - MYSQL_PASSWORD=/run/secrets/db_pass
+    ports:
+      - "8001:80"
+    depends_on:
+      - db
+
+secrets:
+  db_pass:
+    file: ./password.txt
+  db_root:
+    file: ./root_password.txt
+  
+  
+
+
